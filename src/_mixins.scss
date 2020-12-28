@@ -1,0 +1,12 @@
+@use "sass:map";
+
+@mixin icon($vendor, $cat, $icon) {
+  img[data-url="#{$vendor}-#{$cat}-#{$icon}"],
+  img.icon.icon__#{$vendor}-#{$cat}--#{$icon} {
+    content: url(#{map.get($paths, $vendor)}#{map.get($icons, $vendor, $cat, $icon)});
+  }
+
+  .icon__bg.icon__#{$vendor}-#{$cat}--#{$icon} {
+    background-image: url(#{map.get($paths, $vendor)}#{map.get($icons, $vendor, $cat, $icon)});
+  }
+}
