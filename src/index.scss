@@ -10,7 +10,7 @@ $3-icons--enabled: true !default;
 // CSS Selector Generation on toggle
 
 if $3-icons--enabled {
-  @each $_vendor, $_vendor-map in $icons {
+  @each $_vendor, $_vendor-map in $3-icons {
     @each $_cat, $_cat-map in $_vendor-map {
       @each $_icon, $_icon-val in $_cat-map {
         img[data-url="#{$_vendor}-#{$_cat}-#{$_icon}"],
