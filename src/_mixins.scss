@@ -1,12 +1,5 @@
 @use "sass:map";
 
-/*-------------------------------
- * Default toggle to enable/disable the resulting long stylesheet as needed
- * ------------------------------
-
-$3-icons--enabled: true !default;
-
-
 // Mixins
 
 @mixin icon($_vendor, $_icon-val) {
@@ -21,31 +14,3 @@ $3-icons--enabled: true !default;
   list-item-image: url(#{map.get($paths, $_vendor)}#{$_icon-val)});
 }
 
-
-// CSS Selector Generation on toggle
-
-if $3-icons--enabled {
-  @each $_vendor, $_vendor-map in $icons {
-    @each $_cat, $_cat-map in $_vendor-map {
-      @each $_icon, $_icon-val in $_cat-map {
-        img[data-url="#{$_vendor}-#{$_cat}-#{$_icon}"],
-        img.icon.icon__#{$_vendor}-#{$_cat}--#{$_icon} {
-          @include icon($_vendor, $_icon-val);
-        }
-
-        .icon__bg.icon__#{$_vendor}-#{$_cat}--#{$_icon} {
-          @include icon__bg($_vendor, $_icon-val)
-
-        ul.icon__bullet.icon__#{$_vendor}-#{$_cat}--#{$_icon},
-        ol.icon__bullet.icon__#{$_vendor}-#{$_cat}--#{$_icon} {
-          @include icon__bullet($_vendor, $_icon-val);
-        }
-
-        ul.icon__bullet > li.icon__stateful.icon__#{$_vendor}-#{$_cat}--#{$_icon},
-        ol.icon__bullet > li.icon__stateful.icon__#{$_vendor}-#{$_cat}--#{$_icon} {
-          @include icon__bullet($_vendor, $_icon-val);
-        }
-      }
-    }
-  }
-}
