@@ -19,26 +19,26 @@ $x-icons--currentColor: true !default;
     }
   }
 
-  @each $_vendor, $_vendor-map in $x-icons {
+  @each $_vendor, $_vendor-map in variables.$x-icons {
     @each $_cat, $_cat-map in $_vendor-map {
       @each $_icon, $_icon-val in $_cat-map {
         img[data-url="#{$_vendor}-#{$_cat}-#{$_icon}"],
         img.x-icon.x-icon__#{$_vendor}-#{$_cat}--#{$_icon} {
-          @include icon($_vendor, $_icon-val);
+          @include mixins.icon($_vendor, $_icon-val);
         }
 
         .x-icon__bg.x-icon__#{$_vendor}-#{$_cat}--#{$_icon} {
-          @include icon__bg($_vendor, $_icon-val);
+          @include mixins.icon__bg($_vendor, $_icon-val);
         }
 
         ul.x-icon__bullet.x-icon__#{$_vendor}-#{$_cat}--#{$_icon},
         ol.x-icon__bullet.x-icon__#{$_vendor}-#{$_cat}--#{$_icon} {
-          @include icon__bullet($_vendor, $_icon-val);
+          @include mixins.icon__bullet($_vendor, $_icon-val);
         }
 
         ul.x-icon__bullet > li.x-icon__stateful.x-icon__#{$_vendor}-#{$_cat}--#{$_icon},
         ol.x-icon__bullet > li.x-icon__stateful.x-icon__#{$_vendor}-#{$_cat}--#{$_icon} {
-          @include icon__bullet($_vendor, $_icon-val);
+          @include mixins.icon__bullet($_vendor, $_icon-val);
         }
       }
     }
