@@ -6,10 +6,20 @@
 @import 'mixins';
 
 $3-icons--enabled: true !default;
+$3-icons--currentColor: true !default;
 
 // CSS Selector Generation on toggle
 
 if $3-icons--enabled {
+  if $3-icons--currentColor {
+    .3-icon,
+    .3-icon__bg,
+    .3-icon__bullet,
+    .3-icon__bullet > li {
+      fill: currentColor;
+    }
+  }
+
   @each $_vendor, $_vendor-map in $3-icons {
     @each $_cat, $_cat-map in $_vendor-map {
       @each $_icon, $_icon-val in $_cat-map {
@@ -19,7 +29,8 @@ if $3-icons--enabled {
         }
 
         .3-icon__bg.3-icon__#{$_vendor}-#{$_cat}--#{$_icon} {
-          @include icon__bg($_vendor, $_icon-val)
+          @include icon__bg($_vendor, $_icon-val);
+        }
 
         ul.3-icon__bullet.3-icon__#{$_vendor}-#{$_cat}--#{$_icon},
         ol.3-icon__bullet.3-icon__#{$_vendor}-#{$_cat}--#{$_icon} {
