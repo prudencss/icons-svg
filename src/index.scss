@@ -10,8 +10,8 @@ $x-icons--currentColor: true !default;
 
 // CSS Selector Generation on toggle
 
-if $x-icons--enabled {
-  if $x-icons--currentColor {
+@if $x-icons--enabled {
+  @if $x-icons--currentColor {
     .x-icon,
     .x-icon__bg,
     .x-icon__bullet > li {
