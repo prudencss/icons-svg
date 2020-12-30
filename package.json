@@ -2,7 +2,7 @@
   "name": "@prudencss/icons-svg",
   "version": "0.0.2",
   "description": "svg icons and helper stylesheets for prudencss",
-  "main": "src/index.scss",
+  "main": "./src/index.scss",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

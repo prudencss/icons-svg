@@ -2,43 +2,42 @@
  * Default toggle to enable/disable the resulting long stylesheet as needed
  * ------------------------------*/
 
-@import 'variables';
-@import 'mixins';
+@use "variables";
+@use "mixins";
 
-$3-icons--enabled: true !default;
-$3-icons--currentColor: true !default;
+$x-icons--enabled: true !default;
+$x-icons--currentColor: true !default;
 
 // CSS Selector Generation on toggle
 
-if $3-icons--enabled {
-  if $3-icons--currentColor {
-    .3-icon,
-    .3-icon__bg,
-    .3-icon__bullet,
-    .3-icon__bullet > li {
+if $x-icons--enabled {
+  if $x-icons--currentColor {
+    .x-icon,
+    .x-icon__bg,
+    .x-icon__bullet > li {
       fill: currentColor;
     }
   }
 
-  @each $_vendor, $_vendor-map in $3-icons {
+  @each $_vendor, $_vendor-map in $x-icons {
     @each $_cat, $_cat-map in $_vendor-map {
       @each $_icon, $_icon-val in $_cat-map {
         img[data-url="#{$_vendor}-#{$_cat}-#{$_icon}"],
-        img.3-icon.3-icon__#{$_vendor}-#{$_cat}--#{$_icon} {
+        img.x-icon.x-icon__#{$_vendor}-#{$_cat}--#{$_icon} {
           @include icon($_vendor, $_icon-val);
         }
 
-        .3-icon__bg.3-icon__#{$_vendor}-#{$_cat}--#{$_icon} {
+        .x-icon__bg.x-icon__#{$_vendor}-#{$_cat}--#{$_icon} {
           @include icon__bg($_vendor, $_icon-val);
         }
 
-        ul.3-icon__bullet.3-icon__#{$_vendor}-#{$_cat}--#{$_icon},
-        ol.3-icon__bullet.3-icon__#{$_vendor}-#{$_cat}--#{$_icon} {
+        ul.x-icon__bullet.x-icon__#{$_vendor}-#{$_cat}--#{$_icon},
+        ol.x-icon__bullet.x-icon__#{$_vendor}-#{$_cat}--#{$_icon} {
           @include icon__bullet($_vendor, $_icon-val);
         }
 
-        ul.3-icon__bullet > li.3-icon__stateful.3-icon__#{$_vendor}-#{$_cat}--#{$_icon},
-        ol.3-icon__bullet > li.3-icon__stateful.3-icon__#{$_vendor}-#{$_cat}--#{$_icon} {
+        ul.x-icon__bullet > li.x-icon__stateful.x-icon__#{$_vendor}-#{$_cat}--#{$_icon},
+        ol.x-icon__bullet > li.x-icon__stateful.x-icon__#{$_vendor}-#{$_cat}--#{$_icon} {
           @include icon__bullet($_vendor, $_icon-val);
         }
       }
