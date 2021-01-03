@@ -36,8 +36,8 @@ $x-icons--currentColor: true !default;
           @include mixins.icon__bullet($_vendor, $_icon-val);
         }
 
-        ul.x-icon__bullet > li.x-icon__stateful.x-icon__#{$_vendor}-#{$_cat}--#{$_icon},
-        ol.x-icon__bullet > li.x-icon__stateful.x-icon__#{$_vendor}-#{$_cat}--#{$_icon} {
+        ul.x-icon__bullet > li.x-icon--stateful.x-icon__#{$_vendor}-#{$_cat}--#{$_icon},
+        ol.x-icon__bullet > li.x-icon--stateful.x-icon__#{$_vendor}-#{$_cat}--#{$_icon} {
           @include mixins.icon__bullet($_vendor, $_icon-val);
         }
       }
