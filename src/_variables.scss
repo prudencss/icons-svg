@@ -1,5 +1,7 @@
+$fa-svg-icons__path: '/assets/svg/font-awesome/' !default;
+
 $x-icons-paths: (
-  fa: '~@fortawesome/fontawesome-free/svgs/'
+  fa: $fa-svg-icons__path,
 );
 
 $x-icons: (

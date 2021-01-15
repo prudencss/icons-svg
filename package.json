@@ -1,10 +1,10 @@
 {
   "name": "@prudencss/icons-svg",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "svg icons and helper stylesheets for prudencss",
   "main": "./src/index.scss",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "sass src/index.scss"
   },
   "repository": {
     "type": "git",
@@ -22,8 +22,10 @@
     "url": "https://github.com/prudencss/icons-svg/issues"
   },
   "homepage": "https://github.com/prudencss/icons-svg#readme",
-  "devDependencies": {},
-  "dependencies": {
+  "devDependencies": {
+    "sass": "^1.32.4"
+  },
+  "peerDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.1"
   }
 }

@@ -2,11 +2,25 @@
  * Default toggle to enable/disable the resulting long stylesheet as needed
  * ------------------------------*/
 
+@use "sass:map";
 @use "variables";
-@use "mixins";
 
 $x-icons--enabled: true !default;
 $x-icons--currentColor: true !default;
+
+// Mixins
+
+@mixin x-icons__icon($_vendor, $_icon-val) {
+  content: url(#{map.get(variables.$x-icons-paths, $_vendor)}#{$_icon-val});
+}
+
+@mixin x-icons__icon--bg($_vendor, $_icon-val) {
+  background-image: url(#{map.get(variables.$x-icons-paths, $_vendor)}#{$_icon-val});
+}
+
+@mixin x-icons__icon--bullet($_vendor, $_icon-val) {
+  list-style-image: url(#{map.get(variables.$x-icons-paths, $_vendor)}#{$_icon-val});
+}
 
 // CSS Selector Generation on toggle
 
@@ -24,21 +38,21 @@ $x-icons--currentColor: true !default;
       @each $_icon, $_icon-val in $_cat-map {
         img[data-url="#{$_vendor}-#{$_cat}-#{$_icon}"],
         img.x-icon.x-icon__#{$_vendor}-#{$_cat}--#{$_icon} {
-          @include mixins.icon($_vendor, $_icon-val);
+          @include x-icons__icon($_vendor, $_icon-val);
         }
 
         .x-icon__bg.x-icon__#{$_vendor}-#{$_cat}--#{$_icon} {
-          @include mixins.icon__bg($_vendor, $_icon-val);
+          @include x-icons__icon--bg($_vendor, $_icon-val);
         }
 
         ul.x-icon__bullet.x-icon__#{$_vendor}-#{$_cat}--#{$_icon},
         ol.x-icon__bullet.x-icon__#{$_vendor}-#{$_cat}--#{$_icon} {
-          @include mixins.icon__bullet($_vendor, $_icon-val);
+          @include x-icons__icon--bullet($_vendor, $_icon-val);
         }
 
         ul.x-icon__bullet > li.x-icon--stateful.x-icon__#{$_vendor}-#{$_cat}--#{$_icon},
         ol.x-icon__bullet > li.x-icon--stateful.x-icon__#{$_vendor}-#{$_cat}--#{$_icon} {
-          @include mixins.icon__bullet($_vendor, $_icon-val);
+          @include x-icons__icon--bullet($_vendor, $_icon-val);
         }
       }
     }
