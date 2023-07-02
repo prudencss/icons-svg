@@ -1,6 +1,6 @@
 {
   "name": "@prudencss/icons-svg",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "svg icons and helper stylesheets for prudencss",
   "main": "./src/index.scss",
   "scripts": {
